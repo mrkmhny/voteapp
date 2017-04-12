@@ -14,6 +14,23 @@ db.once('open', function() {
   console.log('connected, yo!');
 });
 
+var testSchema = new mongoose.Schema({
+  name: String,
+  number: Number
+});
+
+var Test = mongoose.model('test',testSchema);
+
+var something = new Test({
+  name: 'bongos'
+});
+
+something.save()
+
+Test.findOne({},function(error,data){
+  console.log(data);
+})
+
 const app = express();
 app.set('port', (process.env.PORT || 3001));
 
@@ -23,29 +40,20 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-var characterSchema = new mongoose.Schema({
-  characterId: { type: String, unique: true, index: true },
-  name: String,
-  race: String,
-  gender: String,
-  bloodline: String,
-  wins: { type: Number, default: 0 },
-  losses: { type: Number, default: 0 },
-  reports: { type: Number, default: 0 },
-  random: { type: [Number], index: '2d' },
-  voted: { type: Boolean, default: false }
-});
 
 
 
 
-
-
-app.get('/api', (req, res) => {
+app.post('/api', (req, res) => {
+  //mongoose.findOne({test:1},function(error,result){
+    //console.log('post request happened')
+    //res.send(result)
+  //})
   
-  res.send('come on baby')
-  const param = req.query.q;
+  //const param = req.query.q;
   console.log('made a request')
+  console.log('at least its working');
+  res.send('hey man, got your post request')
   
 });
 

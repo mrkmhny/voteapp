@@ -9,6 +9,7 @@
     "express": "4.13.3",
     "fs": "0.0.2",
     "mongoose": "^4.9.4",
+    "nodemon": "^1.11.0",
     "sql.js": "0.3.2"
   },
   "scripts": {
