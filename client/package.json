@@ -8,11 +8,13 @@
     "chart.js": "^2.5.0",
     "dns": "file:./src/mock/dns",
     "fetch": "^1.1.0",
+    "immutability-helper": "^2.1.2",
     "jquery": "^3.2.1",
     "mongoose": "^4.9.4",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "sortablejs": "^1.5.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
