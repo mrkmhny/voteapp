@@ -5,10 +5,11 @@ import Chart from 'chart.js';
 import {FieldGroup, FormGroup, FormControl, Radio, ControlLabel,
         Button, Navbar, Nav, NavItem, NavDropdown, 
         MenuItem, Glyphicon, Dropdown, Well, InputGroup} from 'react-bootstrap';
-import fetch from 'fetch';
 import $ from 'jquery';
 import Sortable from 'sortablejs';
 import update from 'immutability-helper';
+import AppHeader from './components/AppHeader';
+import Graph from './components/Graph'
 
 //import mongoose from '../../node_modules/mongoose';
 //import Data from '../../models.js';
@@ -107,45 +108,6 @@ class App extends Component {
   }
 }
 
-class AppHeader extends Component {
-  render(){
-    return(
-      <div className="App-header">
-          
-          <Nav pullRight bsStyle="pills" style={{display:'flex'}}>
-                <a href="#" style={{color:'white', margin:'10px'}}>Create Poll</a>
-                <a href="#" style={{color:'white', margin:'10px'}}>Sign up</a>
-                <a href="#" style={{color:'white', margin:'10px'}}>Log in</a>
-          </Nav>
-          <img src={logo} className="App-logo" alt="logo" />
-
-          <div id="header-content" style={{display:'flex',flexDirection:'column',marginLeft:'100px'}}>
-            <div id="header-text" style={{marginBottom:'25px'}}>
-              <h1 style={{marginBottom:'-15px'}}>AlternaVoter</h1>
-              <h3>A simple 'instant-runoff' polling machine!</h3>
-            </div>
-            <div id='header-buttons' style={{display:'flex'}}>
-
-              <Button bsStyle="primary" style={{marginRight:'10px'}}>Get Started</Button>
-              <Button bsStyle="default">Learn More</Button>
-              
-            </div>
-          </div>
-        {/*
-          end of app header
-          eventually, what we'll do is put this in it's own AppHeader component,
-          so that we can:
-            - dynamically update Sign up / login in to say the user's name
-            - i think that's it
-        */}
-
-      </div>
-
-      
-    );
-  }
-}
-
 class PollCreator extends Component {
   
   componentDidMount(){
@@ -240,58 +202,6 @@ class Poll extends Component {
 }
 
 
-class Graph extends Component {
-  constructor(props){
-    super(props);
-  }
-  
-  componentDidMount(){
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            data: this.props.data,
-            label: '# of Votes',
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-      options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-      }
-    });
-  }
-  
-  render(){
-    return (
-      <div style={{width:"600px", height:"300px"}}>
-        <canvas id="myChart" style={{/*width:"100px", height:"50px"*/}}></canvas>
-      </div>
-    );
-  }
-}
+
 
 export default App;
